@@ -1,31 +1,18 @@
-@tailwind base;
+/* @tailwind base; */
+@import './preflight.css';
+
 @tailwind components;
 @tailwind utilities;
 
 @import '~@douyinfe/semi-ui/dist/css/semi.min.css';
 
-* {
-  scrollbar-gutter: stable;
-}
+/* 自定义的工具类 */
+@layer utilities {
+  .card {
+    @apply border shadow-sm p-2 rounded-md bg-white dark:bg-black inline-block;
+  }
 
-*::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-
-/* Track */
-*::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 0.5px;
-}
-
-/* Handle */
-*::-webkit-scrollbar-thumb {
-  cursor: pointer;
-  background: transparent;
-}
-
-/* Handle on hover */
-*::-webkit-scrollbar-thumb:hover {
-  background: transparent;
+  .cube {
+    @apply p-2 border shadow-md rounded-md w-12 h-12;
+  }
 }
