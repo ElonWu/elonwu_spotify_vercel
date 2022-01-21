@@ -41,7 +41,13 @@ function spotifyRequest<T>(
 
       const contentType = response.headers.get('content-type');
 
-      console.log({ uri, body, method, resContentType: contentType });
+      console.log({
+        uri,
+        access_token,
+        body,
+        method,
+        resContentType: contentType,
+      });
 
       if (contentType && contentType.indexOf('application/json') !== -1) {
         const data: T & SpotifyError = await response.json();
