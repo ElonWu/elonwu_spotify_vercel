@@ -10,4 +10,8 @@ module.exports = semi({
       sizeLimit: '500k',
     },
   },
+
+  images: {
+    domains: ['i.scdn.co', 'images.unsplash.com'], // 允许的图片来源地址
+  },
 });
