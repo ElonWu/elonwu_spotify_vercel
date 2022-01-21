@@ -1,6 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// next.config.js
+const semi = require('@douyinfe/semi-next').default({
+  /* the extension options */
+});
+module.exports = semi({
   reactStrictMode: true,
-}
 
-module.exports = nextConfig
+  api: {
+    bodyParser: {
+      sizeLimit: '500k',
+    },
+  },
+});
