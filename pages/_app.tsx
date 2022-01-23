@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import '@styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return typeof window === 'undefined' ? null : <Component {...pageProps} />;
 }
 
 export default MyApp;

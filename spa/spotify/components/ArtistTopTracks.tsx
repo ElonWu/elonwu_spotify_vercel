@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import TrackPreview from './TrackPreview';
-import Loading, { TrackListSkeleton } from './base/loading';
+import Loading, { TrackListSkeleton } from '@components/base/loading';
 import useArtistTopTracks from 'spa/spotify/store/artistTopTracks';
 
 const ArtistTopTracks = ({ artistId }: { artistId: string }) => {

@@ -2,6 +2,16 @@ import { Notification } from '@douyinfe/semi-ui';
 import { queryParams } from '@utils/format';
 import { useMemo } from 'react';
 import useSWR, { SWRResponse } from 'swr';
+import type { KeyedMutator } from 'swr';
+import { notNil } from '@utils/type';
+
+export interface SwrData<T> {
+  data?: T;
+  error?: any;
+  loading?: boolean;
+  hasError?: boolean;
+  reload: KeyedMutator<T>;
+}
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -9,7 +19,7 @@ function useApi<T>(
   path: string,
   params?: any,
   options?: { shouldFetch?: boolean },
-) {
+): SwrData<T> {
   const key = useMemo(() => {
     // 优先遵循配置，未配置时默认允许
     let shouldFetch =
@@ -41,7 +51,7 @@ function useApi<T>(
     data,
     error,
     hasError: Boolean(error),
-    loading: isValidating || (!data && !error),
+    loading: notNil(key) && (isValidating || (!data && !error)),
     reload: mutate,
   };
 }

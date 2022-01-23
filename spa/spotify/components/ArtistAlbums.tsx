@@ -1,6 +1,6 @@
 import React from 'react';
 import AlbumPreview from './AlbumPreview';
-import Loading, { AlbumListSkeleton } from './base/loading';
+import Loading, { AlbumListSkeleton } from '@components/base/loading';
 import useArtistAlbum from 'spa/spotify/store/artistAlbum';
 
 const ArtistAlbums = ({ artistId }: { artistId: string }) => {

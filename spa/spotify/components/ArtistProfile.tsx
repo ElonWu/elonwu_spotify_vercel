@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import ArtistPreview from './ArtistPreview';
-import Loading, { ArtistSkeleton } from './base/loading';
+import Loading, { ArtistSkeleton } from '@components/base/loading';
 import useArtist from 'spa/spotify/store/artist';
 
 const ArtistProfile = ({ artistId }: { artistId: string }) => {
