@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import GlobalLayout from '@layouts/global';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -21,6 +22,12 @@ const Home: NextPage = () => {
         icon: '',
         title: 'Unsplash',
       },
+      {
+        key: 'map',
+        path: '/map',
+        icon: '',
+        title: 'Map',
+      },
     ],
     [],
   );
@@ -30,11 +37,16 @@ const Home: NextPage = () => {
       <div className="h-screen w-full overflow-y-auto">
         <h4 className="p-4 border-b ">首页</h4>
 
-        <div className="p-4 grid gap-4">
+        <div className="p-4 grid gap-4 grid-cols-3">
           {apps.map(({ key, path, icon, title }) => (
-            <div key={key} onClick={() => router.push(path)}>
-              <h4>{title}</h4>
-            </div>
+            <Link key={key} href={path}>
+              <div className="grid gap-2 items-center justify-center place-items-center">
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-full border bg-gray-400"></div>
+
+                <h4>{title}</h4>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
