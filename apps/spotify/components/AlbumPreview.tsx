@@ -26,7 +26,12 @@ const AlbumPreview: FC<{
         )}
         onClick={() => link && navigate(`/spotify/album/${album?.id}`)}
       >
-        <div className="h-full shadow-md p-4 flex flex-col items-start justify-between bg-gradient-to-br from-gray-500/60 to-gray-900/60 ">
+        <div
+          className="h-full shadow-md p-4 flex flex-col items-start justify-between"
+          style={{
+            backgroundImage: `linear-gradient(to bottom right, rgba(var(--semi-grey-5), .6), rgba(var(--semi-grey-9), .6))`, // bg-gradient-to-br from-gray-500/50 to-gray-900/50 bg-opacity-60
+          }}
+        >
           <div className="flex items-center justify-between space-x-4 w-full">
             <h4 className="flex-1 text-2xl font-bold text-white w-full whitespace-nowrap overflow-hidden text-ellipsis">
               {album?.name}

@@ -44,7 +44,7 @@ const Global = () => {
 
 const Layout = () => {
   return (
-    <div className="bg-gray-50 overflow-x-hidden overflow-y-scroll min-h-screen">
+    <div className="bg-gray-50 w-screen overflow-x-hidden min-h-screen">
       <Outlet />
     </div>
   );

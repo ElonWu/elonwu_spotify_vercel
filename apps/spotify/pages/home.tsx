@@ -22,20 +22,16 @@ const Home = () => {
 
   const [user, setUser] = useUser();
 
-  return (
-    <div className="h-screen w-full overflow-y-auto">
-      {user ? (
-        <div className="flex flex-col items-stretch justify-start mb-4 space-y-4">
-          <UserNav />
-          <AlbumsSaved />
-          <FollowArtist />
-          <PlaylistOfMine />
-        </div>
-      ) : (
-        <div className="h-full flex items-center justify-center">
-          <Button onClick={onLogin}>请授权登录</Button>
-        </div>
-      )}
+  return user ? (
+    <div className="flex flex-col items-stretch justify-start mb-4 space-y-4">
+      <UserNav />
+      <AlbumsSaved />
+      <FollowArtist />
+      <PlaylistOfMine />
+    </div>
+  ) : (
+    <div className="h-full flex items-center justify-center">
+      <Button onClick={onLogin}>请授权登录</Button>
     </div>
   );
 };

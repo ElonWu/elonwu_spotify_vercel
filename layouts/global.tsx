@@ -25,9 +25,7 @@ const GlobalLayout: NextPage<{
         <Sctipt key={JSON.stringify(options)} {...options} />
       ))}
 
-      <div className="bg-gray-50 overflow-x-hidden overflow-y-scroll min-h-screen">
-        {children}
-      </div>
+      {children}
     </>
   );
 };

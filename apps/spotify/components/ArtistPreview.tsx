@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Artist } from '@models/spotify';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useNavigate } from 'react-router-dom';
 
 const ArtistPreview = ({
   artist,
@@ -10,7 +10,7 @@ const ArtistPreview = ({
   artist: Artist;
   link?: boolean;
 }) => {
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const {
     url = '',
@@ -20,12 +20,13 @@ const ArtistPreview = ({
 
   return (
     <div
-      className="w-full shrink-0 cursor-pointer relative"
-      onClick={() => link && router.push(`/artist/${artist?.id}`)}
+      className="cursor-pointer relative"
+      onClick={() => link && navigate(`/spotify/artist/${artist?.id}`)}
     >
       {url && (
         <Image src={url} alt={artist?.name} width={width} height={height} />
       )}
+
       <div
         className="absolute inset-0 p-4 flex flex-col space-y-2 items-stretch justify-end"
         style={{
