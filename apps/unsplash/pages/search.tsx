@@ -24,6 +24,7 @@ const SearchUnsplash = () => {
     debounce(async (keyword?: string) => {
       if (!keyword) return;
       setSearch(keyword);
+      sessionStorage.setItem('lastSearchUnsplash', keyword);
     }, 200),
     [],
   );
