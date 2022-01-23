@@ -37,7 +37,9 @@ const PlaylistOfMine = () => {
                 >
                   {playlist.name}
                 </h4>
-                <Button onClick={() => router.push(`/player/${playlist.uri}`)}>
+                <Button
+                  onClick={() => router.push(`/spotify/player/${playlist.uri}`)}
+                >
                   Play
                 </Button>
               </div>

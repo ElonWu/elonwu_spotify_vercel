@@ -5,7 +5,7 @@ import { Button } from '@douyinfe/semi-ui';
 // util
 import TrackPreview from '@components/TrackPreview';
 import { Album, Track } from '@models/spotify';
-import AlbumPreview from '@components/AlbumPreview';
+import AlbumPreview from '../components/AlbumPreview';
 import Loading, {
   TrackListSkeleton,
   AlbumSkeleton,
@@ -52,7 +52,7 @@ const Album = () => {
             专辑歌曲
           </h4>
           {data && (
-            <Button onClick={() => router.push(`/player/${data.uri}`)}>
+            <Button onClick={() => router.push(`/spotify/player/${data.uri}`)}>
               Play All
             </Button>
           )}

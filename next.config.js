@@ -42,6 +42,10 @@ module.exports = semi({
           source: '/spotify/:path*',
           destination: `/spotify`,
         },
+        {
+          source: '/unsplash/:path*',
+          destination: `/unsplash`,
+        },
       ],
     };
   },

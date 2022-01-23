@@ -5,6 +5,7 @@ import { Track } from '@models/spotify';
 import { IconPause, IconPlay } from '@douyinfe/semi-icons';
 import { useRouter } from 'next/router';
 import { durationFormat } from '@utils/format';
+import { useNavigate } from 'react-router-dom';
 
 const TrackPreview = ({
   track,
@@ -19,6 +20,7 @@ const TrackPreview = ({
   showDuration?: boolean;
   style?: CSSProperties;
 }) => {
+  const navigate = useNavigate();
   const router = useRouter();
 
   const { hasImages, hasFlag } = useMemo(() => {
@@ -36,7 +38,7 @@ const TrackPreview = ({
     <div
       className="shrink-0 p-2 bg-white rounded-md shadow-md flex items-center space-x-4"
       style={style}
-      onClick={() => router.push(`/player/${track?.uri}`)}
+      onClick={() => router.push(`/spotify/player/${track?.uri}`)}
     >
       {hasImages && (
         <div
@@ -49,7 +51,7 @@ const TrackPreview = ({
           }}
           onClick={(e) => {
             e.stopPropagation();
-            router.push(`/album/${track?.album.id}`);
+            navigate(`/spotify/album/${track?.album.id}`);
           }}
         />
       )}
@@ -72,7 +74,7 @@ const TrackPreview = ({
               }`}
               onClick={(e) => {
                 e.stopPropagation();
-                router.push(`/artist/${artist.id}`);
+                navigate(`/spotify/artist/${artist.id}`);
               }}
             >
               {artist.name}

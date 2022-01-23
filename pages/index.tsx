@@ -1,51 +1,45 @@
-import type { GetServerSidePropsContext, NextPage } from 'next';
+import type { NextPage } from 'next';
 
-// omponent
+import { useMemo } from 'react';
+import { useRouter } from 'next/router';
 import GlobalLayout from '@layouts/global';
-import { Button } from '@douyinfe/semi-ui';
 
-import { SpotifyLoginGetServerSideProps } from '@services/spotify/spotifyGetServerSideProps';
+const Home: NextPage = () => {
+  const router = useRouter();
 
-// util
-import { useCallback } from 'react';
-import { req } from '@utils/request';
-
-import UserNav from '@components/UserNav';
-import FollowArtist from '@components/FollowArtist';
-import PlaylistOfMine from '@components/PlaylistOfMine';
-// import AlbumsNewlyReleased from '@components/AlbumsNewlyReleased';
-import AlbumsSaved from '@components/AlbumsSaved';
-
-const Login: NextPage = ({ profile }: any) => {
-  const onLogin = useCallback(async () => {
-    const res = await req.get<{ uri: string }>('/api/spotify/login');
-
-    if (res?.uri) window.location.href = res.uri;
-  }, []);
+  const apps = useMemo(
+    () => [
+      {
+        key: 'spotify',
+        path: '/spotify',
+        icon: '',
+        title: 'Spotify',
+      },
+      {
+        key: 'unsplash',
+        path: '/unsplash',
+        icon: '',
+        title: 'Unsplash',
+      },
+    ],
+    [],
+  );
 
   return (
     <GlobalLayout title="首页">
       <div className="h-screen w-full overflow-y-auto">
-        {profile ? (
-          <div className="flex flex-col items-stretch justify-start mb-4 space-y-4">
-            <UserNav profile={profile} />
+        <h4 className="p-4 border-b ">首页</h4>
 
-            <AlbumsSaved />
-            <FollowArtist />
-            <PlaylistOfMine />
-            {/* <AlbumsNewlyReleased /> */}
-          </div>
-        ) : (
-          <div className="h-full flex items-center justify-center">
-            <Button onClick={onLogin}>请授权登录</Button>
-          </div>
-        )}
+        <div className="p-4 grid gap-4">
+          {apps.map(({ key, path, icon, title }) => (
+            <div key={key} onClick={() => router.push(path)}>
+              <h4>{title}</h4>
+            </div>
+          ))}
+        </div>
       </div>
     </GlobalLayout>
   );
 };
 
-export default Login;
-
-// run-time 实时根据 params 查询和渲染
-export const getServerSideProps = SpotifyLoginGetServerSideProps;
+export default Home;

@@ -13,7 +13,7 @@ export const req = new Request('/', {
 
     Notification.error({
       content: errMsg,
-      duration: 5,
+      duration: 3,
     });
     return Promise.reject(errMsg);
   },

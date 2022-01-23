@@ -2,7 +2,7 @@ import type { GetServerSidePropsContext, NextPage } from 'next';
 
 // omponent
 import GlobalLayout from '@layouts/global';
-import Spotify from 'spa/spotify';
+import Spotify from 'apps/spotify';
 import { Button } from '@douyinfe/semi-ui';
 
 import { SpotifyLoginGetServerSideProps } from '@services/spotify/spotifyGetServerSideProps';
@@ -21,15 +21,13 @@ const SpotifyHome: NextPage<{ profile: User }> = ({ profile }) => {
 
   return (
     <GlobalLayout title="首页">
-      <div className="h-screen w-full overflow-y-auto">
-        {profile ? (
-          <Spotify profile={profile} />
-        ) : (
-          <div className="h-full flex items-center justify-center">
-            <Button onClick={onLogin}>请授权登录</Button>
-          </div>
-        )}
-      </div>
+      {profile ? (
+        <Spotify profile={profile} />
+      ) : (
+        <div className="h-full flex items-center justify-center">
+          <Button onClick={onLogin}>请授权登录</Button>
+        </div>
+      )}
     </GlobalLayout>
   );
 };

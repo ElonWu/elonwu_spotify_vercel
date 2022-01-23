@@ -7,9 +7,9 @@ import { IconSearch } from '@douyinfe/semi-icons';
 
 // util
 import { debounce } from 'lodash';
-import AlbumPreview from '@components/AlbumPreview';
-import TrackPreview from '@components/TrackPreview';
-import ArtistPreview from '@components/ArtistPreview';
+import AlbumPreview from '../components/AlbumPreview';
+import TrackPreview from '../components/TrackPreview';
+import ArtistPreview from '../components/ArtistPreview';
 import Loading, {
   AlbumListSkeleton,
   ArtistPreviewListSkeleton,

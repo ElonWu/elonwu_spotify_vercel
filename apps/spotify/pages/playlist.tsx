@@ -57,7 +57,9 @@ const Playlist = () => {
                 <h4 className="font-bold text-lg text-gray-600 w-full whitespace-nowrap overflow-hidden text-ellipsis">
                   {data.name}
                 </h4>
-                <Button onClick={() => router.push(`/player/${data.uri}`)}>
+                <Button
+                  onClick={() => router.push(`/spotify/player/${data.uri}`)}
+                >
                   Play All
                 </Button>
               </div>
